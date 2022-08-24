@@ -2,6 +2,7 @@ import './App.css';
 import Header from './componentes/Header';
 import React, {useState} from 'react';
 import FormularioTareas from './componentes/FormularioTareas';
+import ListaTareas from './componentes/ListaTareas';
 
 const App = () => {
   const [tareas, cambiarTareas] = useState(
@@ -13,7 +14,7 @@ const App = () => {
       },
       {
         id: 2,
-        texto: 'Tarea 2',
+        texto: 'Tarea 1439439130',
         completada: false
       }
     ]
@@ -23,6 +24,7 @@ const App = () => {
     <div className='contenedor'>
       <Header />
       <FormularioTareas tareas={tareas} cambiarTareas={cambiarTareas} />
+      <ListaTareas tareas={tareas} />
     </div>
   );
 }

@@ -2,6 +2,14 @@ import React from 'react';
 import Tarea from './Tarea';
 
 const ListaTareas = ({tareas}) => {
+
+    const toggleCompletada = (id) => {
+
+
+
+
+    }
+
     return (
         <ul className='lista-tareas'>
             {
@@ -9,6 +17,7 @@ const ListaTareas = ({tareas}) => {
                 return <Tarea 
                  key={tarea.id}
                  tarea={tarea}
+                 toggleCompletada={toggleCompletada}
                 />
             })
             : <div className='lista-tareas__mensaje'>No hay tareas</div>

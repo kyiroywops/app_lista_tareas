@@ -1,11 +1,15 @@
 import React from 'react';
 import Tarea from './Tarea';
 
-const ListaTareas = ({tareas}) => {
+const ListaTareas = ({tareas, cambiarTareas}) => {
 
     const toggleCompletada = (id) => {
-
-
+        cambiarTareas(tareas.map((tarea) => {
+            if(tarea.id === id){
+                return {...tarea, completada: !tarea.completada}
+            }
+            return tarea;
+        }));
 
 
     }

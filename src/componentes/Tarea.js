@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckSquare, faEdit, faTimes, faSquare} from "@fortawesome/free-solid-svg-icons";
 
-const Tarea = ({tarea, toggleCompletada}) => {
+const Tarea = ({tarea, toggleCompletada, editarTarea}) => {
 
     const [editandoTarea, cambiarEditandoTarea] = useState(false);
     const [nuevaTarea, cambiarNuevaTarea] = useState(tarea.texto);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        editarTarea(tarea.id, nuevaTarea);
         cambiarEditandoTarea(false);
     }
 

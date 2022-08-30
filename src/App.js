@@ -1,26 +1,31 @@
 import './App.css';
 import Header from './componentes/Header';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FormularioTareas from './componentes/FormularioTareas';
 import ListaTareas from './componentes/ListaTareas';
 
 const App = () => {
-  const [tareas, cambiarTareas] = useState(
-    [
-      {
-        id: 1,
-        texto: 'Tarea 1',
-        completada: false
-      },
-      {
-        id: 2,
-        texto: 'Tarea 1439439130',
-        completada: false
-      }
-    ]
-  );
+  const tareasGuardadas = localStorage.getItem('tareas') ? JSON.parse(localStorage.getItem('tareas')) : [];
+  const [tareas, cambiarTareas] = useState(tareasGuardadas);
 
-  const [mostrarCompletadas, cambiarMostrarCompletadas] = useState(true);
+  useEffect(() => {
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+
+
+
+  }, [tareas]);
+
+  let configMostrarCompletadas = '';
+  if(localStorage.getItem('mostrarCompletadas') === null){
+    configMostrarCompletadas = true;
+  } else {
+    configMostrarCompletadas = localStorage.getItem('mostrarCompletadas') === 'true';
+  }
+
+  const [mostrarCompletadas, cambiarMostrarCompletadas] = useState(configMostrarCompletadas);
+  useEffect(() => {
+    localStorage.setItem('mostrarCompletadas', JSON.stringify(mostrarCompletadas));
+  }, [mostrarCompletadas]);
     
   return (
     <div className='contenedor'>

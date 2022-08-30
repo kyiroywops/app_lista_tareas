@@ -25,6 +25,15 @@ const ListaTareas = ({tareas, cambiarTareas}) => {
 
     }
 
+    const borrarTarea = (id) => {
+        cambiarTareas(tareas.filter((tarea) => {
+            if(tarea.id !== id){
+                return tarea;
+            }
+            return;
+        }));
+    }
+
     
     return (
         <ul className='lista-tareas'>
@@ -35,6 +44,7 @@ const ListaTareas = ({tareas, cambiarTareas}) => {
                  tarea={tarea}
                  toggleCompletada={toggleCompletada}
                  editarTarea={editarTarea}
+                 borrarTarea={borrarTarea}
                 />
             })
             : <div className='lista-tareas__mensaje'>No hay tareas</div>
